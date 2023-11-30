@@ -20,12 +20,12 @@ router.post('/', async (req, res)=>{ //Aqui estamos generando actividades
 
 
 
-
-router.put('/', (req, res)=>{
-    res.send('soy put /activity')
-}) 
-router.delete('/', (req, res)=>{
-    res.send('soy delete /activity')
-}) 
+//! POR AHORA NO SE USA PERO CAPAZ QUE DESPUES LO NECESITE
+// router.put('/', (req, res)=>{
+//     res.send('soy put /activity')
+// }) 
+// router.delete('/', (req, res)=>{
+//     res.send('soy delete /activity')
+// }) 
 
 module.exports = router;
