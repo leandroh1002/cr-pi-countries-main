@@ -16,8 +16,14 @@ router.get('/', async(req, res)=>{
         const [countryApi, countryDb] = respuesta
         let filteredCountryApi = countryApi.data.map((countryAtribute)=>{
             return{ //traer solo los datos que necesito para mostrar en el front
-                id: countryAtribute.fifa,
+                id: countryAtribute.cca3,
                 name: countryAtribute.name.common,
+                image: countryAtribute.flags.png,
+                continente: countryAtribute.continents,
+                capital: countryAtribute.capital,
+                subregion: countryAtribute.subregion,
+                area: countryAtribute.area,
+                poblacion: countryAtribute.population,
             }
         })
         let allCountry = [...filteredCountryApi, ...countryDb]
