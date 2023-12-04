@@ -11,22 +11,32 @@ import LandingPage from './components/LandigPage.jsx/LandingPage.jsx';
 import './App.css'
 
 function App() {
+  const [countries, setCountries] = useState([]);
 
+//! hay que ver si al final podemos sacar estas funciones a algun archivo a parte
+//?Esta funcion onSearch es para cuando ingresan algo en el campo de busqueda del SearchBar
+const onSearch = async (id) => {
+   try {
+    const url = `http://localhost:3001/api/countries/${id}`; // * esta haciendo una peticion al server local, del archivo index.js en la ruta de server
 
-
-  const onSearch = async (id) => {
-    try {
-     const url = `http://localhost:3001/rickandmorty/character/${id}`;
+    const {data} = await axios(url)
+    
+      if (data.name) {
+        setCountries((oldCountry) => [...oldCountry, data]);
+      }       
+    } catch (error) {
+      window.alert('¡No Counry con ese id!');
+   }
+}
  
-     const {data} = await axios(url)
-     
-       if (data.name) {
-          setCharacters((oldChars) => [...oldChars, data]);
-       }       
-     } catch (error) {
-       window.alert('¡No hay personajes con este ID!');
-    }
- }
+//? esta funcion es para el boton de cerrar si no me equivoco
+const onClose =(id) =>{
+  setCountries(
+    countries.filter((char) =>{
+      return char.id !== (id)
+    })
+  )
+}
 
   return (
     <div>

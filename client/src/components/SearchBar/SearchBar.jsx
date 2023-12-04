@@ -16,7 +16,7 @@ export default function SearchBar(props) {
 
   return (
     <div className={styles.container}>
-      <input type="search" placeholder="Buscar ID" onChange={handleChange} value={id}/>
+      <input type="search" placeholder="Buscar Counry ID" onChange={handleChange} value={id}/>
       <button onClick={handleSubmit}>Buscar</button>
     </div>
   );
