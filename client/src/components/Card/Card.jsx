@@ -6,7 +6,7 @@ import PATHROUTES from "../../helpers/PathRoutes.helper";
 
 
 function Card(props) {
-  const {id, name, status, species, gender, origin, image, onClose, addFav, removeFav, myFavorites} = props;
+  const {id, name, capital, poblacion, continents, flags, subregion, area} = props;
   const {pathname} = useLocation()
 
   return (
@@ -17,7 +17,7 @@ function Card(props) {
         </div>
 
       <div className={styles.header}>
-      <Link to={`/detail/${id}`}><img className={styles.imgperfil} src={image} alt={name} /></Link>
+      <Link to={`/detail/${id}`}><img className={styles.imgperfil} src={flags} alt={name} /></Link>
       </div>
 
       <div >
@@ -25,8 +25,8 @@ function Card(props) {
           <h2>{name}</h2>
         </div>
         <div className={styles.containerh2}>
-          <h2>{species}</h2>
-          <h2>{gender}</h2>
+          <h2>{capital}</h2>
+          <h2>{continents}</h2>
           {/* <h2>{origin}</h2> */}
         </div>
       </div>

@@ -2,6 +2,8 @@ import React from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import styles from "./Detail.module.css";
+
 
 
 function Detail() {
@@ -23,16 +25,18 @@ function Detail() {
    <div className={styles.container}>
       <div className={styles.divcardsdetail}>
          <div >
-            <img className={styles.divheader} src={countries.image} />
+            <img className={styles.divheader} src={countries.flags} />
          </div>
 
          <div className={styles.div}>
             <h1 className={styles.divh1}>{countries.name}</h1>
                <div className={styles.divh2}>
-               {/* <h2>Status: {countries.status}</h2> //! Va a depender de como traiga axios la Data, hay que hacer console.log
-               <h2>Especie: {countries.species}</h2>
-               <h2>Genero: {countries.gender}</h2>
-               <h2>{countries.origin && countries.origin.name && (<>Origen: {countries.origin.name}</>)}</h2> */}
+                  <h2>ID: {countries.id}</h2>
+                  <h2>Capital: {countries.capital}</h2>
+                  <h2>Continente: {countries.continents}</h2>
+                  <h2>Sub Region: {countries.subregion}</h2>
+                  <h2>Area: {countries.area}</h2>
+                  <h2>Poblacion: {countries.poblacion}</h2>
                </div>
          </div>
       </div>

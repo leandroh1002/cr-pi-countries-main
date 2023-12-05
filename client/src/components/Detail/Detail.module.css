@@ -1,0 +1,43 @@
+.container{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
+.divcardsdetail{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 690px;
+    height: 400px;
+    background-color: rgb(124, 17, 17);  
+    border-radius: 5px;
+    margin-top: 50px;
+}
+
+.divheader{
+    border-radius: 5px;
+    max-width: 220px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.div{
+    width: 360px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+}
+.div h1{
+    position: relative;
+    top: -10px;
+    
+}
+.div h2{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+}

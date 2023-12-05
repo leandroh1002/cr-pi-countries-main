@@ -25,7 +25,6 @@ const {Country, Activity} = require("./db")
         poblacion: countryAtribute.population,
         // Otros campos según la estructura de tu modelo Country
       });
-      console.log(countryAtribute.capital)
 
       // Si hay actividades asociadas al país, agrégales también
       // if (countryData.activities && countryData.activities.length > 0) {

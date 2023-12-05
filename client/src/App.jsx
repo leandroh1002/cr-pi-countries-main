@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 import PATHROUTES from "./helpers/PathRoutes.helper.js";
 import Forms from "./components/Forms/Forms.jsx";
 import Card from "./components/Card/Card.jsx";
@@ -21,12 +22,14 @@ const onSearch = async (id) => {
     const url = `http://localhost:3001/api/countries/${id}`; // * esta haciendo una peticion al server local, del archivo index.js en la ruta de server
 
     const {data} = await axios(url)
-    
-      if (data.name) {
+    console.log(data)
+      if (data.name.common) {
         setCountries((oldCountry) => [...oldCountry, data]);
-      }       
+      }    
+
     } catch (error) {
-      window.alert('¡No Counry con ese id!');
+      console.log(error)
+      window.alert('¡No Country con ese id!');
    }
 }
  
