@@ -11,6 +11,7 @@ import LandingPage from './components/LandigPage.jsx/LandingPage.jsx';
 import './App.css'
 
 function App() {
+  const location = useLocation();
   const [countries, setCountries] = useState([]);
 
 //! hay que ver si al final podemos sacar estas funciones a algun archivo a parte
@@ -43,7 +44,7 @@ const onClose =(id) =>{
     {location.pathname !== "/" && <Nav onSearch={onSearch} /> }
     <Routes>
         <Route path={PATHROUTES.LANDING} element={<LandingPage/>}></Route>
-        <Route path={PATHROUTES.HOME} element={<Home/>}></Route>
+        <Route path={PATHROUTES.HOME} element={<Home countries={countries} onClose={onClose}/>}></Route>
         <Route path={PATHROUTES.DETAIL} element={<Detail/>}></Route>
     </Routes>
     </div>

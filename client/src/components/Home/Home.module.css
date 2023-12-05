@@ -1,0 +1,14 @@
+.wrapperCards{
+    /* background-color: aqua; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.contenedor{  
+    display : flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    /* max-width: 80%; */
+    margin: auto;}

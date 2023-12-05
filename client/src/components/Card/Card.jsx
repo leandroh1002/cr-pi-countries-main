@@ -1,9 +1,54 @@
-import React from 'react'
+import { connect } from "react-redux";
+//import { addFav, removeFav } from "../../redux/actions";
+import styles from "./Card.module.css";
+import { Link, useLocation } from "react-router-dom";
+import PATHROUTES from "../../helpers/PathRoutes.helper";
 
-function Card() {
+
+function Card(props) {
+  const {id, name, status, species, gender, origin, image, onClose, addFav, removeFav, myFavorites} = props;
+  const {pathname} = useLocation()
+
   return (
-    <div>Card</div>
-  )
+    <div>
+      <div className={styles.cardContainer}>
+        <div className={styles.wrapperButton}>
+          {pathname !== PATHROUTES.FAVORITES && (<button className={styles.close} onClick={() => onClose(id)}>X</button>)}
+        </div>
+
+      <div className={styles.header}>
+      <Link to={`/detail/${id}`}><img className={styles.imgperfil} src={image} alt={name} /></Link>
+      </div>
+
+      <div >
+        <div className={styles.contenedorNombreEstado}/* className={name ? styles.name : styles.noname} */>
+          <h2>{name}</h2>
+        </div>
+        <div className={styles.containerh2}>
+          <h2>{species}</h2>
+          <h2>{gender}</h2>
+          {/* <h2>{origin}</h2> */}
+        </div>
+      </div>
+      </div>
+    </div>
+  );
+
 }
 
-export default Card
+const mapDispatchToProps = (dispatch)=>{
+  return{
+    addFav: (character)=> {
+      dispatch(addFav(character))
+    },
+    removeFav: (id)=> {
+      dispatch(removeFav(id))
+    },
+  };
+};
+
+const mapStatToProps = (state) => {
+  return{myFavorites: state.myFavorites};
+};
+
+export default connect(mapStatToProps, mapDispatchToProps)(Card);

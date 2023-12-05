@@ -1,0 +1,111 @@
+.cardContainer{
+    background-color: white; 
+    position: relative;
+    margin-top: 68px;
+    width:300px;
+    height: 180px;
+    display: flex;
+    flex-direction: column;  
+    align-items: center;
+    border-radius: 10px;
+    /*margin: auto;*/
+    justify-content: center;
+
+}
+.containerTransition{
+    transition: width 0.3s, height 0.3s, background-color 0.3s;
+    background-color: white;
+    width:300px;
+    height: 40px;
+    /*position: relative;*/
+    z-index: 1;
+    top: -50px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.cardContainer:hover .close{
+    visibility: visible;
+}
+
+.close{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    border-radius: 50%;
+    border: none;
+    color: white;
+    background-color: #FF5454;
+    font-weight: bold;
+    width: 20px;
+    height: 20px;
+    align-items: center;
+}
+
+h2{
+    font-family: 'Titillium Web', sans-serif;
+    font-size: large;
+    margin: 0;
+    text-align: center;
+    color: #555;}
+    
+
+
+.imgperfil{
+    position: absolute;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+   /*clip-path: ellipse(77% 66% at 50% 27%);
+   width: 180px;
+   padding-bottom: 10px;
+   top: -80px;
+   border-radius: 13px;
+   position: relative;
+   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);*/
+}
+.divfav{
+    background: none;
+    border: none;
+    position: absolute;
+}
+.header{
+    background-color: black;
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
+    border-radius: 20px;
+    background-color: #fff;
+    top: -50px;
+}
+
+
+.contenedorNombreEstado{
+    text-decoration: none;
+    display: flex;
+    gap:10px;
+    position: relative;
+    top: 40px;
+    justify-content: center;
+    align-items: center;
+    /*background-color: rgb(50, 81, 4);*/
+}
+
+.containerh2{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    top: 55px;
+    width: 200px;
+}
+
+
+.statusImage{
+    width: 20px;
+    height: 20px;
+}

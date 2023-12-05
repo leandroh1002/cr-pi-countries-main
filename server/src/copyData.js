@@ -11,7 +11,7 @@ async function cargarDatosIniciales() {
   
       if (countriesCount === 0 && activitiesCount === 0) {
         // Si no hay datos, obtén la información de la API externa
-        const apiData = await axios.get('URL_DE_TU_API_EXTERNA/countries');
+        const apiData = await axios.get('http://localhost:5000/countries');
   
         // Procesa los datos y guárdalos en la base de datos
         for (const countryData of apiData.data) {
@@ -24,7 +24,6 @@ async function cargarDatosIniciales() {
             subregion: countryAtribute.subregion,
             area: countryAtribute.area,
             poblacion: countryAtribute.population,
-            // Otros campos según la estructura de tu modelo Country
           });
   
           // Si hay actividades asociadas al país, agrégales también
