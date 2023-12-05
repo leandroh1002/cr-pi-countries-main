@@ -1,7 +1,6 @@
 const { Router } = require("express");
 const {Activity} = require("../db");
 const Country = require("../models/Country");
-
 const router = Router();
 
 

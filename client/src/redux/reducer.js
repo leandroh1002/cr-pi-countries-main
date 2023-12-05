@@ -7,10 +7,6 @@ const initialState = {
 
 const rootReducer = (state= initialState, {type, payload}) =>{
 switch(type){
-    case ADD_FAV:
-        return { ...state, myFavorites: payload, allCharacters: payload };
-    case REMOVE_FAV:
-        return { ...state, myFavorites: payload };
     case FILTER:
         let copy3 = state.allCharacters.filter((genero) =>{
             return genero.gender === payload;
