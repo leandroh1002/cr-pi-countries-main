@@ -8,7 +8,6 @@ export default function Home(props) {
       {countries.map((country) => {
         return (
           <div>
-          <h1>hola</h1>
           <Card
             key={country.id}
             id={country.id}

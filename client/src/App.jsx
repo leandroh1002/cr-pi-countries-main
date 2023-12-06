@@ -29,7 +29,6 @@ const onSearch = async (name) => {
       window.alert('No se encontraron países con ese fragmento de nombre.');
     }
   } catch (error) {
-    console.error(error);
     window.alert('Error al buscar país.');
   }
 };

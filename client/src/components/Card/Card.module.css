@@ -55,9 +55,7 @@ h2{
 
 
 .imgperfil{
-    position: absolute;
     object-fit: cover;
-    width: 100%;
     height: 100%;
    /*clip-path: ellipse(77% 66% at 50% 27%);
    width: 180px;
