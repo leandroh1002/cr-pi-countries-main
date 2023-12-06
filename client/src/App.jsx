@@ -17,21 +17,24 @@ function App() {
 
 //! hay que ver si al final podemos sacar estas funciones a algun archivo a parte
 //?Esta funcion onSearch es para cuando ingresan algo en el campo de busqueda del SearchBar
-const onSearch = async (id) => {
-   try {
-    const url = `http://localhost:3001/api/countries/${id}`; // * esta haciendo una peticion al server local, del archivo index.js en la ruta de server
+const onSearch = async (name) => {
+  try {
+    const url = `http://localhost:3001/api/countries/`;
 
-    const {data} = await axios(url)
-    console.log(data)
-      if (data.name.common) {
-        setCountries((oldCountry) => [...oldCountry, data]);
-      }    
+    const { data } = await axios.get(url, { params: { name } });
 
-    } catch (error) {
-      console.log(error)
-      window.alert('¡No Country con ese id!');
-   }
-}
+    if (data.length > 0) {
+      setCountries(data);
+    } else {
+      window.alert('No se encontraron países con ese fragmento de nombre.');
+    }
+  } catch (error) {
+    console.error(error);
+    window.alert('Error al buscar país.');
+  }
+};
+
+
  
 //? esta funcion es para el boton de cerrar si no me equivoco
 const onClose =(id) =>{
