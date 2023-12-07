@@ -1,6 +1,7 @@
 const PATHROUTES = {
     LANDING: "/",
     HOME: "/home",
+    ALLCOUNTRIES: "/allcountries",
     DETAIL:"/detail/:id",
 }
 

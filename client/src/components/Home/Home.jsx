@@ -7,7 +7,7 @@ export default function Home(props) {
     <div className={styles.wrapperCards}>
       {countries.map((country) => {
         return (
-          <div>
+          <div key={country.id}>
           <Card
             key={country.id}
             id={country.id}

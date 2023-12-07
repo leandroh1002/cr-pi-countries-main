@@ -4,51 +4,14 @@ const {Country, Activity} = require("../db")
 const axios = require('axios')
 const router = Router();
 
-// router.get('/', async(req, res)=>{ 
-//     let countryPromiseApi = axios.get('http://localhost:5000/countries/')
-//     let countryPromiseDb = Country.findAll({
-//         include: Activity
-//     })
-//     Promise.all([
-//         countryPromiseApi, //respuesta de la api
-//         countryPromiseDb // respuesta de la base de datos
-//     ])
-//     .then((respuesta) =>{
-//         const [countryApi, countryDb] = respuesta
-//         let filteredCountryApi = countryApi.data.map((countryAtribute)=>{
-//             return{ //traer solo los datos que necesito para mostrar en el front
-//                 id: countryAtribute.cca3,
-//                 name: countryAtribute.name.common,
-//                 image: countryAtribute.flags.png,
-//                 continente: countryAtribute.continents,
-//                 capital: countryAtribute.capital,
-//                 subregion: countryAtribute.subregion,
-//                 area: countryAtribute.area,
-//                 poblacion: countryAtribute.population,
-//             }
-//         })
-//         let allCountry = [...filteredCountryApi, ...countryDb]
-//         res.send(allCountry)
-//     })
-// }) 
-// router.get('/', async(req, res)=>{ //buscando a todos los agregados de la base de datos y probar los enlaces de las tablas de relacion
-//     const country = await Country.findAll({
-//         include: Activity
-//     })
-//     res.send(country)
-// }) 
 
-// router.get('/:idPais', async (req, res)=>{
-//     try {
-//         const {idPais} = req.params
-//         const URL = `http://localhost:5000/countries/`;
-//         let pais
-//         response = (await axios.get(URL + idPais))
-//         pais = response.data
-//         return res.send(pais)
-//     } catch (error) {
-//         return res.status(500).send(error.message)
-// }}) 
+router.get('/', async(req, res)=>{ //buscando a todos los agregados de la base de datos y probar los enlaces de las tablas de relacion
+    const country = await Country.findAll({
+        include: Activity
+    })
+    res.send(country)
+}) 
+
 
 //? Esta ruta es para el componente Detail
 router.get('/:idPais', async (req, res) => {

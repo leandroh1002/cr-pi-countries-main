@@ -32,19 +32,6 @@ function Card(props) {
 
 }
 
-const mapDispatchToProps = (dispatch)=>{
-  return{
-    addFav: (character)=> {
-      dispatch(addFav(character))
-    },
-    removeFav: (id)=> {
-      dispatch(removeFav(id))
-    },
-  };
-};
 
-const mapStatToProps = (state) => {
-  return{myFavorites: state.myFavorites};
-};
 
-export default connect(mapStatToProps, mapDispatchToProps)(Card);
+export default Card;
