@@ -1,12 +1,15 @@
-const { Router } = require("express");
-const countryRoute = require("../controllers/Country")
-const activityRoute = require("../controllers/Activity")
+const router = require ('express').Router();
+const getCountry = require("../controllers/getCountry")
+const getActivity = require("../controllers/getActivity")
+const getCountryById = require("../controllers/getCountryById")
+const getCountryByQuery = require("../controllers/getCountryByQuery")
+const postActivity = require("../controllers/postActivity")
 
-const router = Router();
+router.get('/countries/' , getCountry)  // /api/countries
+router.get('/countries/search' , getCountryByQuery)  // /api/countries
+router.get('/countries/:idPais' , getCountryById)  // /api/countries
 
-//Cuando quede modularizado deberia verse como el del index.js de rickandmorty
-
-router.use('/countries' , countryRoute)  // /api/countries
-router.use('/activity' , activityRoute)// /api/activity
+router.get('/activities' , getActivity)// /api/activities
+router.post('/activities' , postActivity)// /api/activities
 
 module.exports = router;

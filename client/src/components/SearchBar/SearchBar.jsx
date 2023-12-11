@@ -1,23 +1,27 @@
+// SearchBar.jsx
+import React, { useState } from "react";
 import styles from "./SearchBar.module.css";
-import { useState } from "react";
 
 export default function SearchBar(props) {
-  const { onSearch } = props; // destructuring, es para traer una sola props que se le dio al nav
-  const [id, setId] = useState([]);
+  const { onSearch } = props;
+  const [searchInput, setSearchInput] = useState("");
 
   const handleChange = (event) => {
-    setId(event.target.value);
+    setSearchInput(event.target.value);
   }
 
-  const handleSubmit = () => {
-    onSearch(id);
-    setId("");
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    onSearch(searchInput);
+    setSearchInput("");
   };
 
   return (
     <div className={styles.container}>
-      <input type="search" placeholder="Buscar Counry ID" onChange={handleChange} value={id}/>
-      <button onClick={handleSubmit}>Buscar</button>
+      <form onSubmit={handleSubmit}>
+        <input type="search" placeholder="Buscar Country ID" onChange={handleChange} value={searchInput} />
+        <button type="submit">Buscar</button>
+      </form>
     </div>
   );
 }

@@ -1,4 +1,6 @@
 import React from 'react';
+import styles from "./Pagination.module.css";
+
 
 const Pagination = ({ countriesPerPage, totalCountries, currentPage, setCurrentPage }) => {
   const pageNumbers = [];
@@ -18,9 +20,8 @@ const Pagination = ({ countriesPerPage, totalCountries, currentPage, setCurrentP
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <button onClick={onPrevPage} disabled={currentPage === 1}>Anterior</button>
-      <button onClick={onNextPage} disabled={currentPage >= pageNumbers.length}>Siguiente</button>
 
         {pageNumbers.map((noPage) => (
           <div key={noPage}>
@@ -29,6 +30,8 @@ const Pagination = ({ countriesPerPage, totalCountries, currentPage, setCurrentP
             </button>
           </div>
         ))}
+        
+        <button onClick={onNextPage} disabled={currentPage >= pageNumbers.length}>Siguiente</button>
     </div>
   );
 };

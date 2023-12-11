@@ -8,7 +8,7 @@ import Detail from "./components/Detail/Detail.jsx";
 import Home from "./components/Home/Home.jsx";
 import Nav from "./components/Nav/Nav.jsx";
 import LandingPage from './components/LandigPage.jsx/LandingPage.jsx';
-import AllCountries from './components/AllCountries.jsx';
+import AllCountries from './components/AllCountries/AllCountries.jsx';
 import './App.css'
 
 function App() {
@@ -22,10 +22,10 @@ const onSearch = async (name) => {
     const url = `http://localhost:3001/api/countries/`;
 
     const { data } = await axios.get(url + `?name=${name}`);
-
     if (data.length > 0) {
       
       setCountries(data);
+      console.log(data)
     } else {
       window.alert('No se encontraron países con ese fragmento de nombre.');
     }
@@ -43,6 +43,7 @@ const onSearch = async (name) => {
         <Route path={PATHROUTES.HOME} element={<Home countries={countries} />}> </Route>
         <Route path={PATHROUTES.ALLCOUNTRIES} element={<AllCountries />}></Route>
         <Route path={PATHROUTES.DETAIL} element={<Detail/>}></Route>
+        <Route path={PATHROUTES.FORM} element={<Forms/>}></Route>
     </Routes>
     </div>
   )
