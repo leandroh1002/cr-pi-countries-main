@@ -13,9 +13,9 @@ const validate = (userData) => {
     errors.Duracion = 'La duración debe ser un número mayor a 0';
   }
 
-  if (!userData.Paises.trim()) {
-    errors.Paises = 'El campo Paises es obligatorio';
-  }
+  if (userData.Paises.length === 0) {
+    errors.Paises = 'Debes seleccionar al menos un país';
+  }  
 
   return errors;
 };

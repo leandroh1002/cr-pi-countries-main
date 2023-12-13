@@ -9,7 +9,7 @@ const getCountryById = async (req, res) => {
   try {
     const country = await Country.findOne({
       where: { id: idPais },
-      // include: [{ model: Activity, as: 'activities' }],
+      // include: [ Activity],
     });
 
     if (country) {

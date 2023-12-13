@@ -1,4 +1,4 @@
-export const ADD_FAV = "ADD_FAV"
-export const REMOVE_FAV = "REMOVE_FAV"
-export const FILTER = "FILTER"
+export const FILTER_CONTINENT = "FILTER_CONTINENT"
+export const FILTER_ACTIVITIES = "FILTER_ACTIVITIES"
+export const ORDER_POBLACION = "ORDER_POBLACION"
 export const ORDER = "ORDER"

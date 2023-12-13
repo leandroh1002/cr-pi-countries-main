@@ -9,7 +9,7 @@ function Forms(props) {
     Dificultad: '',
     Duracion: '',
     Temporada: 'Verano',
-    Paises: '',
+    Paises: [],
   });
   const [errors, setErrors] = useState({});
 
@@ -38,7 +38,15 @@ function Forms(props) {
   };
 
   const handleChange = (event) => {
-    setUserData({ ...userData, [event.target.name]: event.target.value });
+    if (event.target.name === 'Paises') {
+      // Para el campo de selección múltiple, obtenemos las opciones seleccionadas
+      const selectedCountries = Array.from(event.target.selectedOptions, (option) => option.value);
+
+      setUserData({ ...userData, Paises: selectedCountries });
+    } else {
+      setUserData({ ...userData, [event.target.name]: event.target.value });
+    }
+
     // Limpiar los errores cuando el usuario comienza a escribir nuevamente
     setErrors({ ...errors, [event.target.name]: undefined });
   };
@@ -65,10 +73,20 @@ function Forms(props) {
           <option value="Invierno">Invierno</option>
           <option value="Primavera">Primavera</option>
         </select>
-        {/* <br />
-        <label htmlFor="Paises">Paises: </label>
-        <input type="text" name="Paises" value={userData.Paises} onChange={handleChange} />
-        <p className={styles.error}>{errors.Paises}</p> */}
+        <br />
+        <label htmlFor="Paises">Países: </label>
+        <select
+          name="Paises"
+          value={userData.Paises}
+          onChange={handleChange}
+          multiple
+        >
+          <option value="Argentina">Argentina</option>
+          <option value="Brasil">Brasil</option>
+          <option value="Chile">Chile</option>
+          {/* Agrega más países según sea necesario */}
+        </select>
+        <p className={styles.error}>{errors.Paises}</p>
         <hr />
         <div>
           <button type="submit">Crear Actividad</button>

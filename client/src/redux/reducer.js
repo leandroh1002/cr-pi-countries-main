@@ -1,35 +1,45 @@
 import { FILTER, ORDER } from "./actionstypes";
 
 const initialState = {
-    myFavorites: [],
-    allCharacters: [],
-}
+  allCountries: [], // Renombré allCharacters a allCountries para que sea más claro.
+};
 
-const rootReducer = (state= initialState, {type, payload}) =>{
-switch(type){
+const filterCountries = (countries, filter) => {
+  if (filter.continent) {
+    countries = countries.filter((country) => country.continent === filter.continent);
+  }
+  if (filter.activity) {
+    countries = countries.filter((country) => country.activity === filter.activity);
+  }
+  return countries;
+};
+
+const orderCountries = (countries, order) => {
+  if (order === "A") {
+    return countries.sort((a, b) => a.name.localeCompare(b.name)); // Ordenar alfabéticamente de A a Z.
+  } else if (order === "D") {
+    return countries.sort((a, b) => b.name.localeCompare(a.name)); // Ordenar alfabéticamente de Z a A.
+  }
+  return countries;
+};
+
+const rootReducer = (state = initialState, { type, payload }) => {
+  switch (type) {
     case FILTER:
-        let copy3 = state.allCharacters.filter((genero) =>{
-            return genero.gender === payload;
-        })
-        return {
-            ...state, myFavorites: copy3,
-        }
+      const filteredCountries = filterCountries(state.allCountries, payload);
+      return {
+        ...state,
+        allCountries: filteredCountries,
+      };
     case ORDER:
-        let copy4;
-        if (payload === "A") {
-            copy4 = state.allCharacters.sort((a, b) => a.id - b.id); // Ordenar de menor a mayor por ID.
-          } else if (payload === "D") {
-            copy4 = state.allCharacters.sort((a, b) => b.id - a.id); // Ordenar de mayor a menor por ID.
-          }
-        return{
-            ...state, myFavorites: copy4,
-        }
-
-    default: 
-        return{
-            ...state
-        };
-    }   
-}
+      const orderedCountries = orderCountries(state.allCountries, payload);
+      return {
+        ...state,
+        allCountries: orderedCountries,
+      };
+    default:
+      return state; // Devolver el estado sin cambios por defecto.
+  }
+};
 
 export default rootReducer;
