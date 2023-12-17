@@ -3,6 +3,7 @@ const { DataTypes } = require('sequelize');
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   // defino el modelo
+  //const Country = 
   sequelize.define('Country', {
     id: {
       type: DataTypes.STRING,
@@ -38,4 +39,11 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
   } , { timestamps: false });
+
+
+// Country.associate = (models) => {
+//   Country.hasMany(models.Activity, { as: 'activities' });
+// };
+
+// return Country;
 };

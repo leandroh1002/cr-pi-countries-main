@@ -1,44 +1,54 @@
-import { FILTER, ORDER } from "./actionstypes";
+import { FILTER_CONTINENT, FILTER_ACTIVITIES, ORDER, ORDER_POBLACION } from "./actionstypes";
 
 const initialState = {
-  allCountries: [], // Renombré allCharacters a allCountries para que sea más claro.
-};
-
-const filterCountries = (countries, filter) => {
-  if (filter.continent) {
-    countries = countries.filter((country) => country.continent === filter.continent);
-  }
-  if (filter.activity) {
-    countries = countries.filter((country) => country.activity === filter.activity);
-  }
-  return countries;
-};
-
-const orderCountries = (countries, order) => {
-  if (order === "A") {
-    return countries.sort((a, b) => a.name.localeCompare(b.name)); // Ordenar alfabéticamente de A a Z.
-  } else if (order === "D") {
-    return countries.sort((a, b) => b.name.localeCompare(a.name)); // Ordenar alfabéticamente de Z a A.
-  }
-  return countries;
+  allCountries: [],
 };
 
 const rootReducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case FILTER:
-      const filteredCountries = filterCountries(state.allCountries, payload);
+    case FILTER_CONTINENT:
+      let copy3 = state.allCountries.filter((country) => {
+        return country.continente === payload;
+      });
       return {
         ...state,
-        allCountries: filteredCountries,
+        allCountries: copy3,
+      };
+    case FILTER_ACTIVITIES:
+      let copy2 = state.allCountries.filter((country) => {
+        return country.actividad === payload;
+      });
+      return {
+        ...state,
+        allCountries: copy2,
       };
     case ORDER:
-      const orderedCountries = orderCountries(state.allCountries, payload);
+      let copy4;
+      if (payload === "A") {
+        copy4 = state.allCountries.sort((a, b) => a.name.localeCompare(b.name));
+      } else if (payload === "D") {
+        copy4 = state.allCountries.sort((a, b) => b.name.localeCompare(a.name));
+      }
       return {
         ...state,
-        allCountries: orderedCountries,
+        myFavorites: copy4,
+      };
+
+    case ORDER_POBLACION:
+      let copy1;
+      if (payload === "A") {
+        copy1 = state.allCountries.sort((a, b) => a.population - b.population);
+      } else if (payload === "D") {
+        copy1 = state.allCountries.sort((a, b) => b.population - a.population);
+      }
+      return {
+        ...state,
+        myFavorites: copy1,
       };
     default:
-      return state; // Devolver el estado sin cambios por defecto.
+      return {
+        ...state,
+      };
   }
 };
 

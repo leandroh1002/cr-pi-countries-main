@@ -4,14 +4,13 @@ import Pagination from '../Pagination/Pagination';
 import styles from "./AllCountries.module.css";
 import axios from 'axios';
 import SearchBar from '../SearchBar/SearchBar';
-import { connect, useDispatch } from 'react-redux'
-import { filterCards, orderCards } from "../../redux/actions";
+import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom';
 
 const AllCountries = () => {
   const [countries, setCountries] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [countriesPerPage, setCountriesPerPage] = useState(15);
+  const [countriesPerPage, setCountriesPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   const [search, setSearch] = useState("");
   const [aux, setAux] = useState(false);
@@ -75,8 +74,4 @@ const AllCountries = () => {
   );
 };
 
-const mapStateToProps = (state) =>{
-  return{countries: state.allCountries};
-}
-
-export default connect(mapStateToProps, { orderCards, filterCards })(AllCountries);
+export default AllCountries;

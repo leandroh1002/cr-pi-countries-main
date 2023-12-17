@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { Country } = require("../db");
+const { Country, Activity } = require("../db");
 const router = Router();
 
 // Ruta para obtener un país por su ID
@@ -9,7 +9,7 @@ const getCountryById = async (req, res) => {
   try {
     const country = await Country.findOne({
       where: { id: idPais },
-      // include: [ Activity],
+      include: Activity,
     });
 
     if (country) {
