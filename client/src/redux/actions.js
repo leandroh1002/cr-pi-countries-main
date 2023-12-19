@@ -1,26 +1,28 @@
 import { FILTER_CONTINENT, FILTER_ACTIVITIES, ORDER, ORDER_POBLACION } from "./actionstypes";
 
-export const filterByContinent =(continente) =>{
-    return{
+export const filterByContinent = (continents) => {
+    return {
         type: FILTER_CONTINENT,
-        payload: continente,
-    }
-}
-export const filterByActivities =(activity) =>{
-    return{
-        type: FILTER_ACTIVITIES,
-        payload: activity,
+        payload: continents,
     }
 }
 
-export const orderCards =(orden) =>{
-    return{
-        type: ORDER,
-        payload: orden,
+export const filterByActivities = (Activities) => {
+    return {
+        type: FILTER_ACTIVITIES,
+        payload: Activities,
     }
 }
-export const orderPoblacion =(orden) =>{
-    return{
+
+export const orderCards = (orden, countries) => {
+    return {
+        type: ORDER,
+        payload: { orden, countries },
+    }
+}
+
+export const orderPoblacion = (orden) => {
+    return {
         type: ORDER_POBLACION,
         payload: orden,
     }
