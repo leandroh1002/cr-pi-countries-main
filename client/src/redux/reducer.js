@@ -2,19 +2,21 @@ import { FILTER_CONTINENT, FILTER_ACTIVITIES, ORDER, ORDER_POBLACION } from "./a
 
 const initialState = {
     allCountries: [],
+    filteredCountries: [],
 };
 
 const rootReducer = (state = initialState, { type, payload }) => {
     switch (type) {
 
-        case FILTER_CONTINENT: //orden por continente
+        case FILTER_CONTINENT:
             let copy3 = state.allCountries.filter((country) => {
-                return country.continente === payload;
+                return country.continents === payload;
             });
             return {
                 ...state,
-                allCountries: copy3,
+                filteredCountries: copy3, // Almacena los países filtrados en el nuevo campo
             };
+        
 
         case FILTER_ACTIVITIES: //ordena por actividad
             let copy2 = state.allCountries.filter((country) => {
@@ -41,17 +43,24 @@ const rootReducer = (state = initialState, { type, payload }) => {
                 allCountries: copy4,
             };
 
-        case ORDER_POBLACION: //ordena por cantidad de pobalcion
-            let copy1;
-            if (payload === "A") {
-                copy1 = state.allCountries.sort((a, b) => a.population - b.population);
-            } else if (payload === "D") {
-                copy1 = state.allCountries.sort((a, b) => b.population - a.population);
-            }
-            return {
-                ...state,
-                allCountries: copy1,
-            };
+            case ORDER_POBLACION:
+                let copy1;
+                switch (payload) {
+                    case "A":
+                        // Ordenar por población ascendente
+                        copy1 = state.allCountries.slice().sort((a, b) => a.poblacion - b.poblacion);
+                        break;
+                    case "D":
+                        // Ordenar por población descendente
+                        copy1 = state.allCountries.slice().sort((a, b) => b.poblacion - a.poblacion);
+                        break;
+                    default:
+                        copy1 = [];
+                }
+                return {
+                    ...state,
+                    filteredCountries: copy1,
+                };
         default:
             return {
                 ...state,
