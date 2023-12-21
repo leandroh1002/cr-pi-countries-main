@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './Forms.module.css';
 import validate from '../../Functions/Validation';
 import axios from 'axios';
@@ -12,6 +12,23 @@ function Forms(props) {
     Paises: [],
   });
   const [errors, setErrors] = useState({});
+  const [countries, setCountries] = useState([]);
+  const [countrySelected, setCountrySelected] = useState([]);
+
+
+
+  useEffect(() => {
+    const fetchCountries = async () => {
+      try {
+        const response = await axios.get('http://localhost:3001/api/countries');
+        setCountries(response.data);
+      } catch (error) {
+        console.error('Error al obtener la lista de países:', error);
+      }
+    };
+
+    fetchCountries();
+  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -21,10 +38,10 @@ function Forms(props) {
       try {
         const response = await axios.post('http://localhost:3001/api/activities', userData);
 
-        if (response.status === 201) {
-          // La actividad se creó con éxito, puedes realizar acciones adicionales si es necesario
-          console.log('Actividad creada con éxito');
-          // Puedes realizar acciones adicionales aquí, por ejemplo, redirigir a otra página o actualizar la lista de actividades.
+        if (response.status === 200) {
+          const actividadCreada = response.data;
+          const actividadId = actividadCreada.id;
+          console.log('Actividad creada con éxito. ID:', actividadId);
         } else {
           console.error('Error al crear la actividad');
         }
@@ -39,16 +56,18 @@ function Forms(props) {
 
   const handleChange = (event) => {
     if (event.target.name === 'Paises') {
-      // Para el campo de selección múltiple, obtenemos las opciones seleccionadas
       const selectedCountries = Array.from(event.target.selectedOptions, (option) => option.value);
-
       setUserData({ ...userData, Paises: selectedCountries });
     } else {
       setUserData({ ...userData, [event.target.name]: event.target.value });
     }
 
-    // Limpiar los errores cuando el usuario comienza a escribir nuevamente
     setErrors({ ...errors, [event.target.name]: undefined });
+  };
+
+  const handleAddCountry = () => {
+    setCountrySelected([...countrySelected, ...userData.Paises]);
+    setUserData({ ...userData, Paises: [] });
   };
 
   return (
@@ -81,17 +100,30 @@ function Forms(props) {
           onChange={handleChange}
           multiple
         >
-          <option value="Argentina">Argentina</option>
-          <option value="Brasil">Brasil</option>
-          <option value="Chile">Chile</option>
-          {/* Agrega más países según sea necesario */}
+          {countries.map((country) => (
+            <option key={country.id} value={country.id}>
+              {country.name}
+            </option>
+          ))}
         </select>
+        <button type="button" onClick={handleAddCountry}>Add</button>
         <p className={styles.error}>{errors.Paises}</p>
         <hr />
         <div>
           <button type="submit">Crear Actividad</button>
         </div>
       </form>
+
+      {/* Mostrar países seleccionados */}
+      <div>
+        <h2>Países Seleccionados</h2>
+        <ul>
+          {countrySelected.map((country, index) => (
+            
+            <li key={index}>{country}</li>
+          ))}{console.log()}
+        </ul>
+      </div>
     </div>
   );
 }

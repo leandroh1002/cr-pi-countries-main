@@ -20,7 +20,7 @@ function Detail() {
         });
         return setCountries({});
      }, [id]);
-
+console.log(countries)
   return (
    <div className={styles.container}>
       <div className={styles.divcardsdetail}>
@@ -37,6 +37,21 @@ function Detail() {
                   <h2>Sub Region: {countries.subregion}</h2>
                   <h2>Area: {countries.area}</h2>
                   <h2>Poblacion: {countries.poblacion}</h2>
+                  <h2>Actividades:</h2>
+                  <ul>
+                  {countries.Activities ? (
+                     countries.Activities.map((activity) => (
+                        <li key={activity.id}>
+                        <p>Nombre: {activity.Nombre}</p>
+                        <p>Dificultad: {activity.Dificultad}</p>
+                        <p>Duración: {activity.Duracion}</p>
+                        <p>Temporada: {activity.Temporada}</p>
+                        </li>
+                     ))
+                  ) : (
+                     <p>No hay actividades disponibles.</p>
+                  )}
+                  </ul>
                </div>
          </div>
       </div>
