@@ -63,6 +63,7 @@ const AllCountries = () => {
 
   return (
     <div>
+      //*****************************************/
       <div className={styles.divfilter}>
         <select onChange={handleOrder}>
           <option value="A">Ascendente</option>
@@ -79,9 +80,10 @@ const AllCountries = () => {
           ))}
         </select>
       </div>
-
+    //*************************************************/
       <SearchBar onSearch={onSearchChange} />
 
+    //****************************************************/
       <div className={styles.cardContainer}>
         {countriesToMap.map(country => (
           <div className={styles.container} key={country.id}>
@@ -95,6 +97,7 @@ const AllCountries = () => {
           </div>
         )).slice((currentPage - 1) * countriesPerPage, currentPage * countriesPerPage)}
       </div>
+
       <Pagination countriesPerPage={countriesPerPage} currentPage={currentPage} setCurrentPage={setCurrentPage} totalCountries={countriesToMap.length} />
     </div>
   );

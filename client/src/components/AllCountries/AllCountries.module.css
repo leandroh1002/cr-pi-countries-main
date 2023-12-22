@@ -1,8 +1,13 @@
 .container{
-    width: 400px;
+    background-color: red;
+    width: 340px;
+    height: 400px;
 }
-
 .cardContainer{
+    background-color: aqua;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    margin: 50px;
+    gap: 20px;
 }
