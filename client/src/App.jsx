@@ -7,7 +7,7 @@ import Card from "./components/Card/Card.jsx";
 import Detail from "./components/Detail/Detail.jsx";
 import Home from "./components/Home/Home.jsx";
 import Nav from "./components/Nav/Nav.jsx";
-import LandingPage from './components/LandigPage/LandingPage.jsx';
+import LandingPage from './components/LandigPage.jsx/LandingPage.jsx';
 import AllCountries from './components/AllCountries/AllCountries.jsx';
 import './App.css'
 

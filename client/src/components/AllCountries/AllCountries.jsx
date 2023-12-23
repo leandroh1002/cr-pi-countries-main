@@ -87,7 +87,7 @@ const AllCountries = () => {
       <div className={styles.cardContainer}>
         {countriesToMap.map(country => (
           <div className={styles.container} key={country.id}>
-            <div className={styles.header}>
+            <div className={styles.cointainerimage}>
               <Link to={`/detail/${country.id}`}>
                 <img className={styles.imgperfil} src={country.flags} alt={country.name} />
               </Link>

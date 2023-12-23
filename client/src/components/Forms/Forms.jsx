@@ -3,7 +3,7 @@ import styles from './Forms.module.css';
 import validate from '../../Functions/Validation';
 import axios from 'axios';
 
-function Forms(props) {
+function Forms() {
   const [userData, setUserData] = useState({
     Nombre: '',
     Dificultad: '',
@@ -71,8 +71,8 @@ function Forms(props) {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} action="">
+    <div className={styles.container}>
+      <form className={styles.containerForm} onSubmit={handleSubmit} action="">
         <label htmlFor="Nombre">Nombre: </label>
         <input type="text" name="Nombre" value={userData.Nombre} onChange={handleChange} />
         <p className={styles.error}>{errors.Nombre}</p>
@@ -121,7 +121,7 @@ function Forms(props) {
           {countrySelected.map((country, index) => (
             
             <li key={index}>{country}</li>
-          ))}{console.log()}
+          ))}
         </ul>
       </div>
     </div>
