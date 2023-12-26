@@ -1,7 +1,20 @@
+.container{
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  background-color: red;
+  align-items: center;
+}
+
 .divbtn{
     display: flex;
     justify-content: space-around;
-    margin-top: 30px;
+    background-color: green;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-right: 20px;
+
 }
 
 a{

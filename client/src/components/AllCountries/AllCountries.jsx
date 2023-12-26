@@ -63,7 +63,6 @@ const AllCountries = () => {
 
   return (
     <div>
-      //*****************************************/
       <div className={styles.divfilter}>
         <select onChange={handleOrder}>
           <option value="A">Ascendente</option>
@@ -82,8 +81,6 @@ const AllCountries = () => {
       </div>
     //*************************************************/
       <SearchBar onSearch={onSearchChange} />
-
-    //****************************************************/
       <div className={styles.cardContainer}>
         {countriesToMap.map(country => (
           <div className={styles.container} key={country.id}>

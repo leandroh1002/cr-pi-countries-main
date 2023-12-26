@@ -23,15 +23,18 @@ const Pagination = ({ countriesPerPage, totalCountries, currentPage, setCurrentP
     <div className={styles.container}>
       <button onClick={onPrevPage} disabled={currentPage === 1}>Anterior</button>
 
-        {pageNumbers.map((noPage) => (
-          <div key={noPage}>
-            <button onClick={() => onSpeficPage(noPage)}>
-              {noPage}
-            </button>
-          </div>
-        ))}
-        
-        <button onClick={onNextPage} disabled={currentPage >= pageNumbers.length}>Siguiente</button>
+      {pageNumbers.map((noPage) => (
+        <div key={noPage} className={styles['button-container']}>
+          <button
+            className={`${styles.button} ${noPage === currentPage ? styles.active : ''}`}
+            onClick={() => onSpeficPage(noPage)}
+          >
+            {noPage}
+          </button>
+        </div>
+      ))}
+
+      <button onClick={onNextPage} disabled={currentPage >= pageNumbers.length}>Siguiente</button>
     </div>
   );
 };

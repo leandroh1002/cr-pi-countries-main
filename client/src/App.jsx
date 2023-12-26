@@ -5,7 +5,6 @@ import PATHROUTES from "./helpers/PathRoutes.helper.js";
 import Forms from "./components/Forms/Forms.jsx";
 import Card from "./components/Card/Card.jsx";
 import Detail from "./components/Detail/Detail.jsx";
-import Home from "./components/Home/Home.jsx";
 import Nav from "./components/Nav/Nav.jsx";
 import LandingPage from './components/LandigPage.jsx/LandingPage.jsx';
 import AllCountries from './components/AllCountries/AllCountries.jsx';
@@ -34,6 +33,14 @@ const onSearch = async (name) => {
   }
 };
 
+//? esta funcion es para el boton de cerrar si no me equivoco
+const onClose =(id) =>{
+  setCharacters(
+    characters.filter((char) =>{
+      return char.id !== (id)
+    })
+  )
+}
 
   return (
     <div>
@@ -42,7 +49,7 @@ const onSearch = async (name) => {
     {/* <Route path={PATHROUTES.HOME} element={<Home countries={countries} />}> </Route> */}
 
         <Route path={PATHROUTES.LANDING} element={<LandingPage/>}></Route>
-        <Route path={PATHROUTES.HOME} element={<AllCountries />}></Route>
+        <Route path={PATHROUTES.HOME} element={<AllCountries countries={countries} onClose={onClose}/>}></Route>
         <Route path={PATHROUTES.DETAIL} element={<Detail/>}></Route>
         <Route path={PATHROUTES.FORM} element={<Forms/>}></Route>
     </Routes>

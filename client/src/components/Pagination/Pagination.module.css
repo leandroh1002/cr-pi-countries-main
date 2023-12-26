@@ -1,6 +1,24 @@
-.container{
+.container {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     margin-bottom: 50px;
-}
+  }
+  
+  .button-container {
+    margin: 5px; /* Ajusta el margen según tus preferencias */
+  }
+  
+  .button {
+    background-color: #df5353; /* Color de fondo predeterminado */
+    border: 1px solid #ccc; /* Borde predeterminado */
+    padding: 5px 10px; /* Ajusta el relleno según tus preferencias */
+    cursor: pointer;
+    color: black;
+  }
+  
+  .button.active {
+    background-color: #3498db; /* Color de fondo cuando el botón está activo */
+    color: #fff; /* Color del texto cuando el botón está activo */
+  }
+  

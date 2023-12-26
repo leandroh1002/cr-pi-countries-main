@@ -1,12 +1,33 @@
 .error{
     color: red;
 }
-.containerForm{
-
-}
 
 .container{
+    background-color: blueviolet;
     display: flex;
     flex-direction: column;
     margin-top: 50px;
+    align-items: center;
+
+}
+
+.containerForm{
+    background-color: grey;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 450px;
+}
+
+.etiquetas{
+    display: flex;
+    flex-direction: column;
+}
+.campos{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.camposDeTemporadas{
+    display: flex;
 }

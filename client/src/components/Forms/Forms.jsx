@@ -73,27 +73,58 @@ function Forms() {
   return (
     <div className={styles.container}>
       <form className={styles.containerForm} onSubmit={handleSubmit} action="">
-        <label htmlFor="Nombre">Nombre: </label>
-        <input type="text" name="Nombre" value={userData.Nombre} onChange={handleChange} />
-        <p className={styles.error}>{errors.Nombre}</p>
-        <br />
-        <label htmlFor="Dificultad">Dificultad (1-5): </label>
-        <input type="number" name="Dificultad" value={userData.Dificultad} onChange={handleChange} />
-        <p className={styles.error}>{errors.Dificultad}</p>
-        <br />
-        <label htmlFor="Duracion">Duración (horas): </label>
-        <input type="number" name="Duracion" value={userData.Duracion} onChange={handleChange} />
-        <p className={styles.error}>{errors.Duracion}</p>
-        <br />
+
+        <div className={styles.etiquetas}>
+          <div className={styles.campos}>
+            <label htmlFor="Nombre">Nombre de la Actividad</label>
+            <p className={styles.error}>{errors.Nombre}</p>
+          </div>
+          <>
+            <input type="text" name="Nombre" value={userData.Nombre} onChange={handleChange} />
+          </>
+        </div>
+
+        <div className={styles.etiquetas}>
+          <div className={styles.campos}>
+            <label htmlFor="Dificultad">Dificultad (1-5): </label>
+            <p className={styles.error}>{errors.Dificultad}</p>
+          </div>
+          <>
+            <input type="number" name="Dificultad" value={userData.Dificultad} onChange={handleChange} />
+          </>
+        </div>
+
+        <div className={styles.etiquetas}>
+          <div className={styles.campos}>
+            <label htmlFor="Duracion">Duración (horas): </label>
+            <p className={styles.error}>{errors.Duracion}</p>
+          </div>
+          <>
+            <input type="number" name="Duracion" value={userData.Duracion} onChange={handleChange} />
+          </>
+        </div>
+
+
+
+        <div className={styles.camposDeTemporadas}>
         <label htmlFor="Temporada">Temporada: </label>
         <select name="Temporada" value={userData.Temporada} onChange={handleChange}>
           <option value="Verano">Verano</option>
           <option value="Otoño">Otoño</option>
           <option value="Invierno">Invierno</option>
           <option value="Primavera">Primavera</option>
-        </select>
-        <br />
+        </select></div>
+
+
+
+
+
+        <div className={styles.etiquetas}>
+          <div className={styles.campos}>
         <label htmlFor="Paises">Países: </label>
+        <p className={styles.error}>{errors.Paises}</p>
+        </div>
+          <>
         <select
           name="Paises"
           value={userData.Paises}
@@ -107,8 +138,12 @@ function Forms() {
           ))}
         </select>
         <button type="button" onClick={handleAddCountry}>Add</button>
-        <p className={styles.error}>{errors.Paises}</p>
-        <hr />
+          </>
+        </div>
+
+
+
+
         <div>
           <button type="submit">Crear Actividad</button>
         </div>
