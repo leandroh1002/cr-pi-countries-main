@@ -104,8 +104,6 @@ function Forms() {
           </>
         </div>
 
-
-
         <div className={styles.camposDeTemporadas}>
         <label htmlFor="Temporada">Temporada: </label>
         <select name="Temporada" value={userData.Temporada} onChange={handleChange}>
@@ -115,34 +113,27 @@ function Forms() {
           <option value="Primavera">Primavera</option>
         </select></div>
 
-
-
-
-
         <div className={styles.etiquetas}>
           <div className={styles.campos}>
-        <label htmlFor="Paises">Países: </label>
-        <p className={styles.error}>{errors.Paises}</p>
-        </div>
+            <label htmlFor="Paises">Países: </label>
+            <p className={styles.error}>{errors.Paises}</p>
+          </div>
           <>
-        <select
-          name="Paises"
-          value={userData.Paises}
-          onChange={handleChange}
-          multiple
-        >
-          {countries.map((country) => (
-            <option key={country.id} value={country.id}>
-              {country.name}
-            </option>
-          ))}
-        </select>
-        <button type="button" onClick={handleAddCountry}>Add</button>
+            <select
+              name="Paises"
+              value={userData.Paises}
+              onChange={handleChange}
+              multiple
+            >
+            {countries.map((country) => (
+              <option key={country.id} value={country.id}>
+                {country.name}
+              </option>
+            ))}
+            </select>
+            <button type="button" onClick={handleAddCountry}>Add</button>
           </>
         </div>
-
-
-
 
         <div>
           <button type="submit">Crear Actividad</button>
