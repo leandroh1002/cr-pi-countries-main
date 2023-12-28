@@ -4,7 +4,7 @@ import styles from "./SearchBar.module.css";
 
 export default function SearchBar(props) {
   const { onSearch } = props;
-  const [searchInput, setSearchInput] = useState("");
+  const [searchInput, setSearchInput] = useState([]);
 
   const handleChange = (event) => {
     setSearchInput(event.target.value);

@@ -1,4 +1,4 @@
-.container{
+.container {
   width: 100vw;
   height: 60px;
   display: flex;
@@ -23,36 +23,28 @@
   left: 100%;
 }
 
-.divbtn{
-    display: flex;
-    justify-content: space-around;
-    /* background-color: green; */
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-right: 20px;
+.divbtn {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-right: 20px;
+}
 
-}
-.divbtn a {
-  color: #fff;
-  font-size: 18px;
-  text-decoration: none;
-  transition: .3s;
-}
-.divbtn a:hover {
-  color: #f00;
-}
 .divbtn a {
   position: relative;
   font-size: 1.1em;
-  color: #333;
+  color: #fff;
   text-decoration: none;
   padding: 10px 20px 10px;
   transition: .5s;
 }
+
 .divbtn a:hover {
-  color: #0ef;
+  color: #f00;
 }
+
 .divbtn a span {
   position: absolute;
   top: 0;
@@ -66,13 +58,13 @@
   opacity: 0;
   transition: .5s;
 }
+
 .divbtn a:hover span {
   transform: scale(1) translateY(0);
   opacity: 1;
 }
 
-.link.active {
-
+.link {
   position: relative;
   font-size: 1.1em;
   color: #333;
@@ -81,7 +73,11 @@
   transition: .5s;
 }
 
-.link.active span {
+.link:hover {
+  color: #0ef;
+}
+
+.link span {
   position: absolute;
   top: 0;
   left: 0;
@@ -93,4 +89,9 @@
   transform: scale(0) translateY(50px);
   opacity: 0;
   transition: .5s;
+}
+
+.link:hover span {
+  transform: scale(1) translateY(0);
+  opacity: 1;
 }

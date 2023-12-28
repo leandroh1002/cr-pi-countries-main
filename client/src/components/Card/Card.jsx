@@ -1,29 +1,22 @@
 import styles from "./Card.module.css";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 function Card(props) {
-  const {id, name, capital, poblacion, continents, flags, subregion, area, countriesToMap} = props;
-  const {pathname} = useLocation()
-
+  const {id, name, continents, flags} = props;
   return (
     <div>
-      {countriesToMap.map(country => ( 
-      <div className={styles.container} key={country.id}>
-            <div className={styles.header}>
-              <Link to={`/detail/${country.id}`}>
-                <img className={styles.imgperfil} src={country.flags} alt={country.name} />
+      <div className={styles.container} key={id}>
+            <div className={styles.cointainerimage}>
+              <Link to={`/detail/${id}`}>
+                <img src={flags} alt={name} />
               </Link>
             </div>
-            <h1>{country.name}</h1>
-            <h2>{country.continents}</h2>
+            <h1>{name}</h1>
+            <h2>{continents}</h2>
           </div>
-          )).slice((currentPage - 1) * countriesPerPage, currentPage * countriesPerPage)}
     </div>
   );
-
 }
-
-
 
 export default Card;

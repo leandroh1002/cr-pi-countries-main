@@ -14,18 +14,22 @@ const rootReducer = (state = initialState, { type, payload }) => {
             });
             return {
                 ...state,
-                filteredCountries: copy3, // Almacena los países filtrados en el nuevo campo
+                filteredCountries: copy3,
             };
         
 
-        case FILTER_ACTIVITIES: //ordena por actividad
-            let copy2 = state.allCountries.filter((country) => {
-                return country.actividad === payload;
-            });
-            return {
-                ...state,
-                allCountries: copy2,
-            };
+        case FILTER_ACTIVITIES:
+        let copy2 = state.allCountries.filter((country) => {
+            return country.Activities.some(activity => activity.Nombre === payload);
+        });
+        return {
+            ...state,
+            filteredCountries: copy2,
+        };
+
+
+
+
         case ORDER:
             let copy4;
             if (Array.isArray(payload.countries)) {
