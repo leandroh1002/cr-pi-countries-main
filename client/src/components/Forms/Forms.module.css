@@ -1,22 +1,41 @@
 .error{
     color: red;
+    font-size: 1.3em;
+
+}
+.maincontainer{
+    width: 100vw;
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .container{
-    background-color: blueviolet;
     display: flex;
     flex-direction: column;
-    margin-top: 50px;
     align-items: center;
-
+    background: transparent;
+    backdrop-filter: blur(100px);
+    border-radius: 8px;
+    border: 1px solid rgba(153, 153, 153, 0.361);
+    width: 720px;
+    min-height: 550px;
+    justify-content: space-around;
 }
 
 .containerForm{
-    background-color: grey;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    width: 450px;
+    width: 600px;
+    margin: 50px 0 50px;
+}
+.containerForm button{
+    margin-top: 30px;
+    min-width: 190px;
+    height: 60px;
+    font-size: 1.3em;
 }
 
 .etiquetas{
@@ -30,4 +49,10 @@
 }
 .camposDeTemporadas{
     display: flex;
+}
+
+label, h2, li{
+    color: black;
+    font-size: 1.3em;
+
 }

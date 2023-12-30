@@ -1,10 +1,13 @@
 .container{
+    display: flex;
     background: transparent;
     backdrop-filter: blur(10px);
     border-radius: 8px;
     border: 1px solid rgba(153, 153, 153, 0.361);
     width: 340px;
-    height: 290px;
+    height: 320px;
+    flex-direction: column;
+    justify-content: space-between;
 }
 .cardContainer{
     display: flex;
@@ -13,7 +16,11 @@
     margin: 50px;
     gap: 20px;
 }
-.cardContainer h1{
+.container h1{
+    color: black;
+    font-size: 1.2em;
+}
+.container h2{
     color: black;
     font-size: large;
 }

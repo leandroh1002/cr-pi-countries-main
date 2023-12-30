@@ -71,6 +71,8 @@ function Forms() {
   };
 
   return (
+    <div className={styles.maincontainer}>
+      <br />
     <div className={styles.container}>
       <form className={styles.containerForm} onSubmit={handleSubmit} action="">
 
@@ -138,18 +140,17 @@ function Forms() {
         <div>
           <button type="submit">Crear Actividad</button>
         </div>
-      </form>
-
-      {/* Mostrar países seleccionados */}
       <div>
         <h2>Países Seleccionados</h2>
         <ul>
           {countrySelected.map((country, index) => (
             
             <li key={index}>{country}</li>
-          ))}
+          ))}{console.log("este es el countryselected",countrySelected)}
         </ul>
       </div>
+      </form>
+    </div>
     </div>
   );
 }

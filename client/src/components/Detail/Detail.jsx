@@ -22,7 +22,7 @@ function Detail() {
      }, [id]);
 console.log(countries)
   return (
-   <div className={styles.container}>
+   <div className={styles.maincontainer}>
       <div className={styles.divcardsdetail}>
          <div >
             <img className={styles.divheader} src={countries.flags} />

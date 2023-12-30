@@ -1,11 +1,12 @@
 .container{
     background: transparent;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(30px);
     border-radius: 8px;
     border: 1px solid rgba(153, 153, 153, 0.361);
     width: 340px;
-    height: 290px;
+    height: 300px;
 }
+
 .cardContainer{
     display: flex;
     flex-wrap: wrap;
@@ -13,10 +14,7 @@
     margin: 50px;
     gap: 20px;
 }
-.cardContainer h1{
-    color: black;
-    font-size: large;
-}
+
 .cointainerimage{
     width: 340px;
     height: 200px;

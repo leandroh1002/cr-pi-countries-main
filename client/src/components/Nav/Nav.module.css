@@ -34,7 +34,7 @@
 
 .divbtn a {
   position: relative;
-  font-size: 1.1em;
+  font-size: 1.2em;
   color: #fff;
   text-decoration: none;
   padding: 10px 20px 10px;
@@ -42,7 +42,7 @@
 }
 
 .divbtn a:hover {
-  color: #f00;
+  color: #0ef;
 }
 
 .divbtn a span {

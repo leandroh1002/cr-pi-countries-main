@@ -9,17 +9,13 @@ import styles from "./LandingPage.module.css";
 function LandingPage() {
   return (
     <div>
-    <div>
-        <img/>
+      <div className={styles.container}>
+          {/* <h1>Countries</h1>
+          <p>Bienvenidos al proyecto individual del Bootcamp Henry, aqui aplicammos todo el conocimiento adquirido a lo largo de estos meses...</p>
+          <br /> */}
+          <Link to={PATHROUTES.HOME}><button>Ingresar</button></Link>
+      </div>
     </div>
-
-    <div>
-        <h1>Countries</h1>
-        <p>Bienvenidos al proyecto individual del Bootcamp Henry, aqui aplicammos todo el conocimiento adquirido a lo largo de estos meses...</p>
-        <br />
-        <Link to={PATHROUTES.HOME}><button>Ingresar</button></Link>
-    </div>
-</div>
   )
 }
 

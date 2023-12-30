@@ -10,7 +10,7 @@
   }
   
   .button {
-    background-color: #df5353; /* Color de fondo predeterminado */
+    background-color: #03e8f43a; /* Color de fondo predeterminado */
     border: 1px solid #ccc; /* Borde predeterminado */
     padding: 5px 10px; /* Ajusta el relleno según tus preferencias */
     cursor: pointer;
@@ -18,7 +18,9 @@
   }
   
   .button.active {
-    background-color: #3498db; /* Color de fondo cuando el botón está activo */
+    background-color: #03e9f4;
+    -webkit-box-reflect: below 1px linear-gradient(transparent #0005);
+    box-shadow: 0 0 5px #03e9f4, 0 0 15px #03e9f4, 0 0 25px #03e9f4, 0 0 100px #03e9f4;
     color: #fff; /* Color del texto cuando el botón está activo */
   }
   
