@@ -3,7 +3,7 @@ import Pagination from '../Pagination/Pagination';
 import styles from "./Home.module.css";
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import { orderCards, filterByContinent, orderPoblacion, filterByActivities } from "../../redux/actions";
+import { orderCards, filterByContinent, orderPoblacion, filterByActivities, getCountries } from "../../redux/actions";
 import FUNCTIONS from "../../helpers/Functions.helper";
 import Card from '../Card/Card';
 
@@ -17,15 +17,15 @@ const Home = (props) => {
   const dispatch = useDispatch();
   const allCountries = useSelector((state) => state.allCountries);
   const filteredCountries = useSelector((state) => state.filteredCountries);
+  const filteredActivities = useSelector((state) => state.filteredActivities);
 
   const handleOrder = (e) => {
-    // setAux(!aux);
     dispatch(orderCards(e.target.value, countries));
     setCurrentPage(1);
   }
 
   const handleOrderPoblation = (e) => {
-    // setAux(!aux);
+    setAux(!aux);
     dispatch(orderPoblacion(e.target.value));
     setCurrentPage(1);
   }
@@ -53,40 +53,29 @@ const Home = (props) => {
         uniqueActivitiesSet.add(activity.Nombre);
       });
     });
-
     return uniqueActivitiesSet;
   }
 
   useEffect(() => {
-    // Verifica si la prop "country" está presente y no está vacía
     if (country && Object.keys(country).length !== 0) {
-      setCountries(country);
-      setCurrentPage(1);
+      setCountries([country]);
+    } else if (filteredCountries.length > 0) {
+      setCountries(filteredCountries);
+    } else if (filteredActivities.length > 0) {
+      setCountries(filteredActivities);
     } else {
-      // Si no hay datos en "country", usa allCountries o filteredCountries según sea necesario
-      setCountries(filteredCountries.length > 0 ? filteredCountries : allCountries);
+      setCountries(allCountries);
     }
-  }, [allCountries, filteredCountries, country]);
+    setCurrentPage(1);
+  }, [allCountries, filteredCountries, country, filteredActivities]);
 
-  // useEffect(() => {
-  //   const fetchCountries = async () => {
-  //     setLoading(true);
-  //     const url = 'http://localhost:3001/api/countries';
-  //     const res = await axios.get(url);
-  //     dispatch(orderCards(aux ? 'D' : 'A', res.data || []));
-      
-  //     setLoading(false);
-  //   };
-
-  //   fetchCountries();
-  // }, [aux, dispatch]);
 
   useEffect(() => {
     const fetchCountries = async () => {
       setLoading(true);
       const url = 'http://localhost:3001/api/countries';
       const res = await axios.get(url);
-      setCountries(res.data);
+      dispatch(getCountries(res.data));
       setLoading(false);
     };
     fetchCountries();
@@ -115,6 +104,12 @@ const Home = (props) => {
       </select>
     );
   }
+
+
+  console.log("country",country)
+  console.log("countries",countries)
+  console.log("allCountries",allCountries)
+  console.log("filteredCountries",filteredCountries)
 
   return (
     <div>

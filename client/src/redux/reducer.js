@@ -1,12 +1,18 @@
-import { FILTER_CONTINENT, FILTER_ACTIVITIES, ORDER, ORDER_POBLACION } from "./actionstypes";
+import { FILTER_CONTINENT, FILTER_ACTIVITIES, ORDER, ORDER_POBLACION, GET_COUNTRIES } from "./actionstypes";
 
 const initialState = {
     allCountries: [],
     filteredCountries: [],
+    filteredActivities: [],
 };
 
 const rootReducer = (state = initialState, { type, payload }) => {
     switch (type) {
+
+        case GET_COUNTRIES:
+            return {...state,
+            allCountries: payload,
+        }
 
         case FILTER_CONTINENT:
             let copy3 = state.allCountries.filter((country) => {
@@ -24,7 +30,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
         });
         return {
             ...state,
-            filteredCountries: copy2,
+            filteredActivities: copy2,
         };
 
 
@@ -32,22 +38,38 @@ const rootReducer = (state = initialState, { type, payload }) => {
 
         case ORDER:
             let copy4;
-            if (Array.isArray(payload.countries)) {
+
+            // Verificar si filteredCountries está presente y no está vacío
+            if (state.filteredCountries && state.filteredCountries.length > 0) {
+                if (payload.orden === "A") {
+                    copy4 = state.filteredCountries.slice().sort((a, b) => a.name.localeCompare(b.name));
+                } else if (payload.orden === "D") {
+                    copy4 = state.filteredCountries.slice().sort((a, b) => b.name.localeCompare(a.name));
+                }
+            } else if (state.filteredActivities && state.filteredActivities.length > 0) {
+                // Verificar si filteredActivities está presente y no está vacío
+                if (payload.orden === "A") {
+                    copy4 = state.filteredActivities.slice().sort((a, b) => a.name.localeCompare(b.name));
+                } else if (payload.orden === "D") {
+                    copy4 = state.filteredActivities.slice().sort((a, b) => b.name.localeCompare(a.name));
+                }
+            } else if (Array.isArray(payload.countries)) {
+                // Si payload.countries no es un array, asignar un array vacío
                 if (payload.orden === "A") {
                     copy4 = payload.countries.slice().sort((a, b) => a.name.localeCompare(b.name));
                 } else if (payload.orden === "D") {
                     copy4 = payload.countries.slice().sort((a, b) => b.name.localeCompare(a.name));
                 }
             } else {
-                // Si payload.countries no es un array, asignar un array vacío
                 copy4 = [];
             }
             return {
                 ...state,
-                allCountries: copy4,
+                filteredCountries: copy4,
             };
 
-            case ORDER_POBLACION:
+
+        case ORDER_POBLACION:
                 let copy1;
                 switch (payload) {
                     case "A":
@@ -63,8 +85,8 @@ const rootReducer = (state = initialState, { type, payload }) => {
                 }
                 return {
                     ...state,
-                    filteredCountries: copy1,
-                };
+                filteredCountries: copy1,
+            };
         default:
             return {
                 ...state,
