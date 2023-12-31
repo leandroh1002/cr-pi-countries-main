@@ -37,21 +37,23 @@ console.log(countries)
                   <h2>Sub Region: {countries.subregion}</h2>
                   <h2>Area: {countries.area}</h2>
                   <h2>Poblacion: {countries.poblacion}</h2>
+                  
                   <h2>Actividades:</h2>
-                  <ul>
+                  <div className={styles.divActivities}>
                   {countries.Activities ? (
                      countries.Activities.map((activity) => (
-                        <li key={activity.id}>
-                        <p>Nombre: {activity.Nombre}</p>
-                        <p>Dificultad: {activity.Dificultad}</p>
-                        <p>Duración: {activity.Duracion}</p>
-                        <p>Temporada: {activity.Temporada}</p>
-                        </li>
+                        <details name="info" open><summary>Nombre: {activity.Nombre}</summary>
+                        <div className={styles.Actp}>
+                           <p>Dificultad: {activity.Dificultad}</p>
+                           <p>Duración: {activity.Duracion}</p>
+                           <p>Temporada: {activity.Temporada}</p>
+                        </div>
+                     </details>
                      ))
                   ) : (
                      <p>No hay actividades disponibles.</p>
                   )}
-                  </ul>
+                  </div>
                </div>
          </div>
       </div>

@@ -47,8 +47,30 @@
 }
 .div h2{
     color: black;
+
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 5px;
+}
+
+.divActivities{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.divActivities summary{
+    color: black;
+    font-size: 1.3em;
+}
+.divActivities p{
+    color: black;
+    font-size: 1.3em;
+}
+
+.Actp{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
