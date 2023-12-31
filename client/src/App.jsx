@@ -14,8 +14,6 @@ function App() {
   const location = useLocation();
   const [country, setCountry] = useState([]);
 
-//! hay que ver si al final podemos sacar estas funciones a algun archivo a parte
-//?Esta funcion onSearch es para cuando ingresan algo en el campo de busqueda del SearchBar
 const onSearch = async (name) => {
   try {
     const url = `http://localhost:3001/api/countries/`;
@@ -24,7 +22,6 @@ const onSearch = async (name) => {
     if (data.length > 0) {
       
       setCountry(data);
-      console.log(data)
     } else {
       new error;
     }
@@ -33,7 +30,6 @@ const onSearch = async (name) => {
   }
 };
 
-//? esta funcion es para el boton de cerrar si no me equivoco
 const onClose =(id) =>{
   setCountry(
     characters.filter((char) =>{

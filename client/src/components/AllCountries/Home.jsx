@@ -49,8 +49,6 @@ const Home = (props) => {
         uniqueActivitiesSet.add(activity.Nombre);
       });
     });
-    
-    // Convertir el conjunto a un array
     const actArray = Array.from(uniqueActivitiesSet);
 
     return actArray;
@@ -74,7 +72,6 @@ const Home = (props) => {
   };
 
   useEffect(() => {
-    // Verificar si country tiene datos y si es así, hacer el setCountries
     if (country && Object.keys(country).length !== 0) {
       setCountries(country);
     } else if (filteredCountries.length > 0) {
@@ -89,7 +86,7 @@ const Home = (props) => {
   }, [allCountries, filteredCountries, filteredActivities, country]);
 
   useEffect(() => {
-    fetchCountries(); // Llamada inicial al cargar el componente
+    fetchCountries();
   }, []);
 
   const renderActivitiesFilter = () => {

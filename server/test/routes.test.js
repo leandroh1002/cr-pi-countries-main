@@ -16,25 +16,25 @@ describe ('Test de RUTAS', ()=>{
                 expect (response.body).toHaveProperty(prop)
             })   
         });
-        it('Si hay un error responde con status: 500', async()=>{
-            await agent.get('/countries/KLJF').expect(500);
+        it('Si hay un error responde con status: 404', async()=>{
+            await agent.get('/countries/KLJF').expect(404);
         });
     });
 
     describe('GET /countries/search',()=>{
         it('Responde con un status: 200', async()=>{
-            await agent.get('/countries/search').expect(200);
+            await agent.get('/countries/search?name=argentina').expect(200);
         });
-        it('Responde un objeto con las propiedades: "id", "name", "species", "gender", "status", "origin" e "image"', async ()=>{
-            const response = await agent.get('/rickandmorty/character/23');
-            const props = ["id", "name", "species", "gender", "status", "origin", "image"]
+        it('Responde un objeto con las propiedades: "id", "name", "flags", "continents", "capital", "subregion", "area", "poblacion"', async ()=>{
+            const response = await agent.get('/countries/search?name=argentina');
+            const props = ["id", "name", "flags", "continents", "capital", "subregion", "area", "poblacion"]
             
             props.forEach(prop =>{
                 expect (response.body).toHaveProperty(prop)
             })   
         });
-        it('Si hay un error responde con status: 500', async()=>{
-            await agent.get('/countries/search').expect(500);
+        it('Si hay un error responde con status: 404', async()=>{
+            await agent.get('/countries/search?name=fasfkb').expect(404);
         });
     });
 });
