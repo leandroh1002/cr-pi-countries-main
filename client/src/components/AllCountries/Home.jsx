@@ -24,7 +24,7 @@ const Home = (props) => {
   }
 
   const handleOrderPoblation = (e) => {
-    dispatch(orderPoblacion(e.target.value));
+    dispatch(orderPoblacion(e.target.value, countries));
     setCurrentPage(1);
   }
 
@@ -113,6 +113,7 @@ const Home = (props) => {
       </select>
     );
   }
+  console.log(allCountries)
 
   return (
     <div>

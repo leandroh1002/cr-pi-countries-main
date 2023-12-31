@@ -21,7 +21,7 @@ export const orderCards = (orden, countries) => {
     }
 }
 
-export const orderPoblacion = (orden) => {
+export const orderPoblacion = (orden, countries) => {
     return {
         type: ORDER_POBLACION,
         payload: orden,
