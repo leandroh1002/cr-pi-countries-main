@@ -5,11 +5,11 @@ const getCountryById = require("../controllers/getCountryById")
 const getCountryByQuery = require("../controllers/getCountryByQuery")
 const postActivity = require("../controllers/postActivity")
 
-router.get('/countries/' , getCountry)  // /api/countries
-router.get('/countries/search' , getCountryByQuery)  // /api/countries
-router.get('/countries/:idPais' , getCountryById)  // /api/countries
+router.get('/countries/' , getCountry)  
+router.get('/countries/search' , getCountryByQuery) 
+router.get('/countries/:idPais' , getCountryById)  
 
-router.get('/activities' , getActivity)// /api/activities
-router.post('/activities' , postActivity)// /api/activities
+router.get('/activities' , getActivity)
+router.post('/activities' , postActivity)
 
 module.exports = router;

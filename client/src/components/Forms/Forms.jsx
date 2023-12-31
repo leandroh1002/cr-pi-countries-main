@@ -13,8 +13,6 @@ function Forms() {
   });
   const [errors, setErrors] = useState({});
   const [countries, setCountries] = useState([]);
-  const [countrySelected, setCountrySelected] = useState([]);
-
 
 
   useEffect(() => {

@@ -6,13 +6,13 @@
   }
   
   .button-container {
-    margin: 5px; /* Ajusta el margen según tus preferencias */
+    margin: 5px; 
   }
   
   .button {
-    background-color: #03e8f43a; /* Color de fondo predeterminado */
-    border: 1px solid #ccc; /* Borde predeterminado */
-    padding: 5px 10px; /* Ajusta el relleno según tus preferencias */
+    background-color: #03e8f43a; 
+    border: 1px solid #ccc;
+    padding: 5px 10px; 
     cursor: pointer;
     color: black;
   }
@@ -21,6 +21,6 @@
     background-color: #03e9f4;
     -webkit-box-reflect: below 1px linear-gradient(transparent #0005);
     box-shadow: 0 0 5px #03e9f4, 0 0 15px #03e9f4, 0 0 25px #03e9f4, 0 0 100px #03e9f4;
-    color: #fff; /* Color del texto cuando el botón está activo */
+    color: #fff;
   }
   
