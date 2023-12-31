@@ -33,26 +33,27 @@ function Forms() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const validationErrors = validate(userData);
-
+  
     if (Object.keys(validationErrors).length === 0) {
       try {
         const response = await axios.post('http://localhost:3001/api/activities', userData);
-
-        if (response.status === 200) {
-          const actividadCreada = response.data;
-          const actividadId = actividadCreada.id;
-          console.log('Actividad creada con éxito. ID:', actividadId);
+  
+        if (response.status === 201) {
+          window.alert('Actividad creada con éxito');
         } else {
-          console.error('Error al crear la actividad');
+          window.alert('Error al crear la actividad');
         }
       } catch (error) {
         console.error('Error en la solicitud:', error);
+        window.alert('Error en la solicitud');
       }
     } else {
-      console.error('Errores de validación:', validationErrors);
       setErrors(validationErrors);
+      window.alert('Errores de validación. Por favor, revise los campos.');
     }
   };
+  
+  
 
   const handleChange = (event) => {
     if (event.target.name === 'Paises') {
@@ -65,10 +66,6 @@ function Forms() {
     setErrors({ ...errors, [event.target.name]: undefined });
   };
 
-  const handleAddCountry = () => {
-    setCountrySelected([...countrySelected, ...userData.Paises]);
-    setUserData({ ...userData, Paises: [] });
-  };
 
   return (
     <div className={styles.maincontainer}>
@@ -133,22 +130,12 @@ function Forms() {
               </option>
             ))}
             </select>
-            <button type="button" onClick={handleAddCountry}>Add</button>
           </>
         </div>
 
         <div>
           <button type="submit">Crear Actividad</button>
         </div>
-      <div>
-        <h2>Países Seleccionados</h2>
-        <ul>
-          {countrySelected.map((country, index) => (
-            
-            <li key={index}>{country}</li>
-          ))}{console.log("este es el countryselected",countrySelected)}
-        </ul>
-      </div>
       </form>
     </div>
     </div>

@@ -9,6 +9,6 @@ server.use(morgan("dev"));
 server.use(express.json());
 server.use(cors());
 
-server.use('/api',router); //aqui va la direccion de la api que yo vaya a crear por ahora es localhost/api
+server.use('/api',router);
 
 module.exports = server;

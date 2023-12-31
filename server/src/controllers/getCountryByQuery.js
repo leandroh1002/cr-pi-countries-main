@@ -3,7 +3,6 @@ const { Op } = require("sequelize");
 const {Country} = require("../db")
 const router = Router();
 
-//? Esta ruta es para el componente SearchBar
 const getCountryByQuery =  async (req, res) => { 
   const { name } = req.query;
   console.log('Valor de name:', name);

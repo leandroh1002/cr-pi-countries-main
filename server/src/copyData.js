@@ -1,6 +1,6 @@
 const express = require('express');
 const axios = require('axios');
-const { Country, Activity } = require("./db");
+const { Country } = require("./db");
 
 const cargarDatosIniciales = async () => {
   try {
@@ -19,21 +19,7 @@ const cargarDatosIniciales = async () => {
           subregion: countryAtribute.subregion,
           area: countryAtribute.area,
           poblacion: countryAtribute.population,
-          // Otros campos según la estructura de tu modelo Country
         });
-
-        // Si hay actividades asociadas al país, agrégales también
-        // if (countryData.activities && countryData.activities.length > 0) {
-        //   for (const activityData of countryData.activities) {
-        //     const newActivity = await Activity.create({
-        //       name: activityData.name,
-        //       // Otros campos según la estructura de tu modelo Activity
-        //     });
-
-        //     // Asocia la actividad al país
-        //     await newActivity.addCountry(newCountry);
-        //   }
-        // }
       }
     }
 

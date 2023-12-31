@@ -42,6 +42,10 @@
     display: flex;
     flex-direction: column;
 }
+.etiquetas select{
+    height: 250px;
+
+}
 .campos{
     display: flex;
     align-items: center;
