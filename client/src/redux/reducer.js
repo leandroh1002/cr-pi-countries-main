@@ -1,4 +1,4 @@
-import { FILTER_CONTINENT, FILTER_ACTIVITIES, ORDER, ORDER_POBLACION, GET_COUNTRIES } from "./actionstypes";
+import { FILTER_CONTINENT, FILTER_ACTIVITIES, ORDER, ORDER_POBLACION, GET_COUNTRIES, } from "./actionstypes";
 
 const initialState = {
     allCountries: [],
@@ -8,6 +8,7 @@ const initialState = {
 
 const rootReducer = (state = initialState, { type, payload }) => {
     switch (type) {
+
 
         case GET_COUNTRIES:
             return {...state,

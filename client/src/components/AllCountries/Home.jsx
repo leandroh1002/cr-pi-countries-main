@@ -13,7 +13,6 @@ const Home = (props) => {
   const [loading, setLoading] = useState(false);
   const [countriesPerPage, setCountriesPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
-  const [aux, setAux] = useState(false);
   const dispatch = useDispatch();
   const allCountries = useSelector((state) => state.allCountries);
   const filteredCountries = useSelector((state) => state.filteredCountries);
@@ -25,14 +24,12 @@ const Home = (props) => {
   }
 
   const handleOrderPoblation = (e) => {
-    setAux(!aux);
     dispatch(orderPoblacion(e.target.value));
     setCurrentPage(1);
   }
 
   const handleFilter = (e) => {
     dispatch(filterByContinent(e.target.value));
-    setCurrentPage(1);
   }
 
   const handleFilterActivities = (e) => {
@@ -47,46 +44,58 @@ const Home = (props) => {
 
   const extractActivities = () => {
     const uniqueActivitiesSet = new Set();
-
     allCountries.forEach(country => {
       country.Activities.forEach(activity => {
         uniqueActivitiesSet.add(activity.Nombre);
       });
     });
-    return uniqueActivitiesSet;
-  }
+    
+    // Convertir el conjunto a un array
+    const actArray = Array.from(uniqueActivitiesSet);
+
+    return actArray;
+  };
+
+  const resetFilters = async () => {
+    setLoading(true);
+    try {
+      await fetchCountries();
+    } finally {
+      setLoading(false);
+    }
+    setCurrentPage(1);
+  };
+
+  const fetchCountries = async () => {
+    const url = 'http://localhost:3001/api/countries';
+    const res = await axios.get(url);
+    dispatch(getCountries(res.data));
+    setCountries(res.data);
+  };
 
   useEffect(() => {
+    // Verificar si country tiene datos y si es así, hacer el setCountries
     if (country && Object.keys(country).length !== 0) {
-      setCountries([country]);
+      setCountries(country);
     } else if (filteredCountries.length > 0) {
       setCountries(filteredCountries);
+      setCurrentPage(1);
     } else if (filteredActivities.length > 0) {
       setCountries(filteredActivities);
+      setCurrentPage(1);
     } else {
       setCountries(allCountries);
     }
-    setCurrentPage(1);
-  }, [allCountries, filteredCountries, country, filteredActivities]);
-
+  }, [allCountries, filteredCountries, filteredActivities, country]);
 
   useEffect(() => {
-    const fetchCountries = async () => {
-      setLoading(true);
-      const url = 'http://localhost:3001/api/countries';
-      const res = await axios.get(url);
-      dispatch(getCountries(res.data));
-      setLoading(false);
-    };
-    fetchCountries();
+    fetchCountries(); // Llamada inicial al cargar el componente
   }, []);
 
-  
   const renderActivitiesFilter = () => {
     const activities = extractActivities();
-
-    if (activities.size === 1) {
-      const activityName = activities.values().next().value;
+    if (activities.length === 1) {
+      const activityName = activities[0];
       return (
         <button onClick={() => handleFilterActivities(activityName)}>
           {activityName}
@@ -96,7 +105,7 @@ const Home = (props) => {
 
     return (
       <select onChange={(e) => handleFilterActivities(e)}>
-        {[...activities].map((activity, index) => (
+        {activities.map((activity, index) => (
           <option key={index} value={activity}>
             {activity}
           </option>
@@ -104,12 +113,6 @@ const Home = (props) => {
       </select>
     );
   }
-
-
-  console.log("country",country)
-  console.log("countries",countries)
-  console.log("allCountries",allCountries)
-  console.log("filteredCountries",filteredCountries)
 
   return (
     <div>
@@ -131,6 +134,7 @@ const Home = (props) => {
         </select>
 
         {renderActivitiesFilter()}
+        <button onClick={resetFilters}>Reset filtros</button>
       </div>
 
       <div className={styles.cardContainer}>
