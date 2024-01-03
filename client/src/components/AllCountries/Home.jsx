@@ -99,7 +99,6 @@ const Home = (props) => {
       </select>
     );
   }
-  console.log(allCountries)
 
   return (
     <div>
