@@ -4,13 +4,11 @@ import styles from "./Home.module.css";
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { orderCards, filterByContinent, orderPoblacion, filterByActivities, getCountries } from "../../redux/actions";
-import FUNCTIONS from "../../helpers/Functions.helper";
 import Card from '../Card/Card';
 
 const Home = (props) => {
   const { country } = props;
   const [countries, setCountries] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [countriesPerPage, setCountriesPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   const dispatch = useDispatch();
@@ -54,15 +52,6 @@ const Home = (props) => {
     return actArray;
   };
 
-  const resetFilters = async () => {
-    setLoading(true);
-    try {
-      await fetchCountries();
-    } finally {
-      setLoading(false);
-    }
-    setCurrentPage(1);
-  };
 
   const fetchCountries = async () => {
     const url = 'http://localhost:3001/api/countries';

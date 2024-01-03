@@ -1,9 +1,8 @@
 import { useState } from 'react'
-import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import axios from "axios";
 import PATHROUTES from "./helpers/PathRoutes.helper.js";
 import Forms from "./components/Forms/Forms.jsx";
-import Card from "./components/Card/Card.jsx";
 import Detail from "./components/Detail/Detail.jsx";
 import Nav from "./components/Nav/Nav.jsx";
 import LandingPage from './components/LandigPage.jsx/LandingPage.jsx';

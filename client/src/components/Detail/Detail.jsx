@@ -40,19 +40,21 @@ console.log(countries)
                   
                   <h2>Actividades:</h2>
                   <div className={styles.divActivities}>
-                  {countries.Activities ? (
+                  {countries.Activities && countries.Activities.length > 0 ? (
                      countries.Activities.map((activity) => (
-                        <details name="info" open><summary>Nombre: {activity.Nombre}</summary>
-                        <div className={styles.Actp}>
+                        <details name="info" open key={activity.id}>
+                           <summary>Nombre: {activity.Nombre}</summary>
+                           <div className={styles.Actp}>
                            <p>Dificultad: {activity.Dificultad}</p>
                            <p>Duración: {activity.Duracion} hs</p>
                            <p>Temporada: {activity.Temporada}</p>
-                        </div>
-                     </details>
+                           </div>
+                        </details>
                      ))
-                  ) : (
+                     ) : (
                      <p>No hay actividades disponibles.</p>
-                  )}
+                     )}
+
                   </div>
                </div>
          </div>

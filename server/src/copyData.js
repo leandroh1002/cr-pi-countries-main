@@ -1,6 +1,6 @@
 const express = require('express');
 const axios = require('axios');
-const { Country, Activity } = require("./db");
+const { Country } = require("./db");
 
 const cargarDatosIniciales = async () => {
   try {
