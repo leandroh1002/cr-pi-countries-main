@@ -103,6 +103,7 @@ function Forms() {
 
         <div className={styles.camposDeTemporadas}>
         <label htmlFor="Temporada">Temporada: </label>
+        <br />
         <select name="Temporada" value={userData.Temporada} onChange={handleChange}>
           <option value="Verano">Verano</option>
           <option value="Otoño">Otoño</option>

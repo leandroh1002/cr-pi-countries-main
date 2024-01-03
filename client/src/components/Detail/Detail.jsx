@@ -45,7 +45,7 @@ console.log(countries)
                         <details name="info" open><summary>Nombre: {activity.Nombre}</summary>
                         <div className={styles.Actp}>
                            <p>Dificultad: {activity.Dificultad}</p>
-                           <p>Duración: {activity.Duracion}</p>
+                           <p>Duración: {activity.Duracion} hs</p>
                            <p>Temporada: {activity.Temporada}</p>
                         </div>
                      </details>

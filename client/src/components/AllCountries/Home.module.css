@@ -27,3 +27,18 @@
     height: 100%;
     object-fit: cover;
 }
+
+.divfilter{
+    display: flex;
+    justify-content: space-around;
+    backdrop-filter: blur(100px);
+    align-items: center;
+    height: 30px;
+}
+
+.filters{
+    display: flex;
+    font-size: 1.2em;
+    font-weight: bold;
+    gap: 10px;
+}

@@ -115,24 +115,29 @@ const Home = (props) => {
   return (
     <div>
       <div className={styles.divfilter}>
-        <select onChange={handleOrder}>
-          <option value="A">Ascendente</option>
-          <option value="D">Descendente</option>
-        </select>
-
-        <select onChange={handleOrderPoblation}>
-          <option value="D">Mayor</option>
-          <option value="A">Menor</option>
-        </select>
-
-        <select onChange={handleFilter}>
-          {extractContinents().map((continent, index) => (
-            <option key={index} value={continent}>{continent}</option>
-          ))}
-        </select>
-
-        {renderActivitiesFilter()}
-        <button onClick={resetFilters}>Reset filtros</button>
+        <div className={styles.filters}>
+          <p>Orden Alfabetico</p>
+          <select onChange={handleOrder}>
+            <option value="A"> A-Z</option>
+            <option value="D"> Z-A</option>
+          </select>
+          <p>Orden por Poblacion</p>
+          <select onChange={handleOrderPoblation}>
+            
+            <option value="D">Mayor</option>
+            <option value="A">Menor</option>
+          </select>
+        </div>
+        <div className={styles.filters}>
+          <p>Filtro por continente</p>
+          <select onChange={handleFilter}>
+            {extractContinents().map((continent, index) => (
+              <option key={index} value={continent}>{continent}</option>
+            ))}
+          </select>
+          <p>Filtro por Actividad</p>
+          {renderActivitiesFilter()}
+        </div>
       </div>
 
       <div className={styles.cardContainer}>
