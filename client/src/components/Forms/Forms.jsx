@@ -18,7 +18,7 @@ function Forms() {
   useEffect(() => {
     const fetchCountries = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/api/countries');
+        const response = await axios.get('/countries');
         setCountries(response.data);
       } catch (error) {
         console.error('Error al obtener la lista de países:', error);
@@ -34,7 +34,7 @@ function Forms() {
   
     if (Object.keys(validationErrors).length === 0) {
       try {
-        const response = await axios.post('http://localhost:3001/api/activities', userData);
+        const response = await axios.post('/activities', userData);
   
         if (response.status === 201) {
           window.alert('Actividad creada con éxito');

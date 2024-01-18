@@ -15,7 +15,7 @@ function App() {
 
 const onSearch = async (name) => {
   try {
-    const url = `http://localhost:3001/api/countries/`;
+    const url = `/countries/`;
 
     const { data } = await axios.get(url + `search?name=${name}`);
     if (data.length > 0) {
