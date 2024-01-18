@@ -11,7 +11,7 @@ function Detail() {
     const {id} = useParams();
 
     useEffect(() => {
-        axios(`/api/countries/${id}`).then(({ data }) => {
+        axios(`https://countriesback-l6bu.onrender.com/api/countries/${id}`).then(({ data }) => {
            if (data.name) {
               setCountries(data);
            } else {

@@ -15,7 +15,7 @@ function App() {
 
 const onSearch = async (name) => {
   try {
-    const url = `/api/countries/`;
+    const url = `https://countriesback-l6bu.onrender.com/api/countries/`;
 
     const { data } = await axios.get(url + `search?name=${name}`);
     if (data.length > 0) {
