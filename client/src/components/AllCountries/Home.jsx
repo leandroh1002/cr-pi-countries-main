@@ -59,7 +59,7 @@ const Home = (props) => {
 
 
   const fetchCountries = async () => {
-    const url = '/countries';
+    const url = '/api/countries';
     const res = await axios.get(url);
     dispatch(getCountries(res.data));
     setCountries(res.data);

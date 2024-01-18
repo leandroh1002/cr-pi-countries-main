@@ -11,7 +11,7 @@ function Detail() {
     const {id} = useParams();
 
     useEffect(() => {
-        axios(`/countries/${id}`).then(({ data }) => {
+        axios(`/api/countries/${id}`).then(({ data }) => {
            if (data.name) {
               setCountries(data);
            } else {
