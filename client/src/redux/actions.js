@@ -1,4 +1,4 @@
-import { FILTER_CONTINENT, FILTER_ACTIVITIES, ORDER, ORDER_POBLACION, GET_COUNTRIES } from "./actionstypes";
+import { FILTER_CONTINENT, FILTER_ACTIVITIES, ORDER, ORDER_POBLACION, GET_COUNTRIES, GET_MILLION } from "./actionstypes";
 
 export const filterByContinent = (continents) => {
     return {
@@ -34,3 +34,9 @@ export const getCountries = (countries) =>{
         payload: countries,
     }
 }
+export const Million = () =>{
+    return{
+        type: GET_MILLION,
+    }
+}
+

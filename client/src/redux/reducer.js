@@ -1,4 +1,4 @@
-import { FILTER_CONTINENT, FILTER_ACTIVITIES, ORDER, ORDER_POBLACION, GET_COUNTRIES, } from "./actionstypes";
+import { FILTER_CONTINENT, FILTER_ACTIVITIES, ORDER, ORDER_POBLACION, GET_COUNTRIES, GET_MILLION} from "./actionstypes";
 
 const initialState = {
     allCountries: [],
@@ -81,6 +81,15 @@ const rootReducer = (state = initialState, { type, payload }) => {
                 return {
                     ...state,
                 filteredCountries: copy1,
+            };
+
+        case GET_MILLION:
+            let copy6 = state.allCountries.filter((pob) => {
+                return pob.poblacion < 1000000;
+            });
+            return {
+                ...state,
+                filteredCountries: copy6,
             };
         default:
             return {

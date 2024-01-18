@@ -3,7 +3,7 @@ import Pagination from '../Pagination/Pagination';
 import styles from "./Home.module.css";
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import { orderCards, filterByContinent, orderPoblacion, filterByActivities, getCountries } from "../../redux/actions";
+import { orderCards, filterByContinent, orderPoblacion, filterByActivities, getCountries, Million } from "../../redux/actions";
 import Card from '../Card/Card';
 
 const Home = (props) => {
@@ -32,6 +32,11 @@ const Home = (props) => {
 
   const handleFilterActivities = (e) => {
     dispatch(filterByActivities(e.target.value));
+    setCurrentPage(1);
+  }
+
+  const hadleMillion = (e) => {
+    dispatch(Million());
     setCurrentPage(1);
   }
 
@@ -100,6 +105,9 @@ const Home = (props) => {
     );
   }
 
+
+
+
   return (
     <div>
       <div className={styles.divfilter}>
@@ -125,6 +133,10 @@ const Home = (props) => {
           </select>
           <p>Filtro por Actividad</p>
           {renderActivitiesFilter()}
+        </div>
+
+        <div>
+          <button onClick={hadleMillion}>Filtro 1millon</button>
         </div>
       </div>
 
