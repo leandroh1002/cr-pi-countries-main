@@ -10,11 +10,13 @@ const {
 const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_DATABASE}`, {
   logging: false, 
   native: false, 
-  dialectOptions: {
-    ssl: {
-      require: true,
-    }
-  } 
+  dialect: 'postgres',
+      ssl: true, 
+      dialectOptions: {
+         ssl: {
+            rejectUnauthorized: false, 
+         },
+  },
 });
 // const sequelize = new Sequelize(DB_DEPLOY, {
 //   logging: false, 
